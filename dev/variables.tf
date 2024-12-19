@@ -1,3 +1,16 @@
+variable "aws_region" {
+  default = "us-east-1"
+}
+
+variable "project_tags" {
+  type = map(string)
+  default = {
+    "Project"     = "Topinia"
+    "Environment" = "dev"
+    "ProdTag"     = "prod"
+  }
+}
+
 variable "domain_name" {
   description = "The domain name for the Route53 zone"
   type        = string
@@ -15,3 +28,4 @@ variable "s3_hosted_zone_id" {
   type        = string
   default     = "Z3AQBSTGFYJSTF"
 }
+
