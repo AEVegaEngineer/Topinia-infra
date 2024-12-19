@@ -6,15 +6,15 @@ variable "project_tags" {
   type = map(string)
   default = {
     "Project"     = "Topinia"
-    "Environment" = "dev"
-    "ProdTag"     = "prod"
+    "Environment" = "prod"
+    "ProdTag"     = "dev"
   }
 }
 
 variable "domain_name" {
   description = "The domain name for the Route53 zone"
   type        = string
-  default     = "topinia.com"
+  default     = "dev.topinia.com"
 }
 
 variable "s3_website_endpoint" {

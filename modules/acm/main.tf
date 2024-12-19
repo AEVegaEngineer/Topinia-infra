@@ -1,9 +1,9 @@
 variable "DOMAIN_NAME" {}
 
 resource "aws_acm_certificate" "ssl_certificate" {
-  domain_name       = var.DOMAIN_NAME
-  validation_method = "DNS"
-
+  domain_name               = var.DOMAIN_NAME
+  validation_method         = "DNS"
+  subject_alternative_names = ["www.${var.DOMAIN_NAME}"]
   lifecycle {
     create_before_destroy = true
   }

@@ -21,6 +21,19 @@ resource "aws_s3_bucket_website_configuration" "website_config" {
   # }
 }
 
+resource "aws_s3_bucket" "www_bucket" {
+  bucket = "www.${var.DOMAIN_NAME}"
+}
+
+resource "aws_s3_bucket_website_configuration" "www_bucket" {
+  bucket = aws_s3_bucket.www_bucket.id
+
+  redirect_all_requests_to {
+    host_name = var.DOMAIN_NAME
+    protocol  = "https"
+  }
+}
+
 resource "aws_s3_bucket_public_access_block" "website_public_access" {
   bucket = aws_s3_bucket.website_bucket.id
 
