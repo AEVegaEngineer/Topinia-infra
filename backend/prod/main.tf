@@ -18,6 +18,13 @@ module "codestar" {
   source = "../modules/codestar"
 }
 
+module "apigateway" {
+  source               = "../modules/apigateway"
+  api_name             = "opinion-management-service"
+  lambda_invoke_arn    = module.lambda.invoke_arn
+  lambda_function_name = module.lambda.function_name
+}
+
 module "codepipeline" {
   source = "../modules/codepipeline"
 
